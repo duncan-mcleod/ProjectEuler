@@ -11,10 +11,29 @@ namespace Problem016 {
         //Sum of digits in 2^1000
         static void Main(string[] args) {
 
-            BitArray bits = new BitArray(1000, false);
-            bits[0] = true;
+            int[] nums = new int[1000];
+            nums[0] = 1;
 
-            
+            int carry = 0;
+
+            for (int i = 1; i <= 1000; i++) {
+
+                for (int j = 0; j < 1000; j++) {
+                    int val = 2 * nums[j] + carry;
+                    carry = (val > 9) ? val/10 : 0;
+                    nums[j] = val % 10;
+                }
+                //if (i < 32) {
+                //    Console.Write($"{i} - ");
+                //    for (int x = 0; x < 100; x++) {
+                //        Console.Write(nums[x]);
+                //    }
+                //    Console.WriteLine();
+                //}
+
+            }
+            Console.WriteLine(nums.Sum());
+            Console.ReadLine();
         }
     }
 }
