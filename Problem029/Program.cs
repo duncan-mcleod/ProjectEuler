@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Problem028 {
+namespace Problem029 {
     class Program {
         static void Main( string[] args ) {
             Stopwatch watch = Stopwatch.StartNew();
@@ -12,17 +13,18 @@ namespace Problem028 {
         }
         private static int Solve() {
 
-            int sum = 1;
+            //Hashset removes duplicates
+            HashSet<double> set = new HashSet<double>();
 
-            for ( int i = 3; i <= 1001; i+=2 ) {
+            for ( int a = 2; a <= 100; a++ ) {
+                for ( int b = 2; b <= 100; b++) {
 
-                sum += i * i +                      //TR
-                       i * i - ( i - 1 ) +          //TL
-                       i * i - 2 * ( i - 1 ) +      //BL
-                       i * i - 3 * ( i - 1 );       //BR
+                    set.Add( Math.Pow( a, b ) );
+
+                }
             }
 
-            return sum;
+            return set.Count;
         }
     }
 }
